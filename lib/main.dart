@@ -116,6 +116,9 @@ class Curtir extends StatefulWidget {
 }
 
 class _CurtirState extends State<Curtir> {
+  bool curtiu = false;
+  int n = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,13 +130,25 @@ class _CurtirState extends State<Curtir> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              "Curtiu $n vezes",
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             IconButton(
               iconSize: 50,
-              onPressed: () {},
-              icon: Icon(
-                Icons.favorite_outline,
-                color: Colors.black,
-              ),
+              icon: curtiu == true
+                  ? Icon(Icons.favorite, color: Colors.red)
+                  : Icon(Icons.favorite_outline, color: Colors.black),
+              onPressed: () {
+                setState(() {
+                  n = n + 1;
+                  curtiu = true;
+                });
+              },
             ),
           ],
         ),
@@ -143,6 +158,6 @@ class _CurtirState extends State<Curtir> {
 }
 
 
-//pergunta da prova: 
+//pergunta da prova: 4
 //1- o que é um widget
-//2- diferenças dos tipos de widget: stateless e stateful
+//2- diferenças dos tipos de widget: stateless e stateful;
