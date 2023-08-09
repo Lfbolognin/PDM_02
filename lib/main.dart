@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
+import 'contador.dart';
+import 'cadastro.dart';
+import 'curtir.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,6 +19,7 @@ class PaginaInicial extends StatelessWidget {
         '/': (context) => Home(),
         '/contador': (context) => Contador(),
         '/curtir': (context) => Curtir(),
+        '/cadastro': (context) => Cadastro(),
       },
     );
   }
@@ -34,7 +37,11 @@ class Home extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            leading: Icon(Icons.calculate),
+            leading: Icon(
+              Icons.calculate,
+              size: 46,
+              color: Colors.brown,
+            ),
             title: Text("Contador"),
             subtitle: Text("Exemplo de incremento"),
             trailing: Icon(Icons.chevron_right),
@@ -45,13 +52,27 @@ class Home extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.favorite,
-              size: 36,
+              size: 46,
+              color: Colors.greenAccent,
             ),
-            title: Text("Curti"),
+            title: Text("Curtir"),
             subtitle: Text("Exemplo de curtir e descurtir"),
             trailing: Icon(Icons.chevron_right),
             onTap: () {
               Navigator.pushNamed(context, "/curtir");
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.person,
+              size: 46,
+              color: Colors.orangeAccent,
+            ),
+            title: Text("Cadastrar"),
+            subtitle: Text("Exemplo de cadastrar"),
+            trailing: Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.pushNamed(context, "/cadastro");
             },
           ),
         ],
@@ -59,104 +80,6 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-class Contador extends StatefulWidget {
-  const Contador({super.key});
-
-  @override
-  State<Contador> createState() => _ContadorState();
-}
-
-class _ContadorState extends State<Contador> {
-  int x = 100;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 173, 102, 8),
-        title: Text("Meu Aplitcativo"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(x.toString()),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 97, 202, 65)),
-              onPressed: () {
-                setState(() {
-                  x = x + 1;
-                });
-              },
-              child: Text("Acrescentar"),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              onPressed: () {
-                setState(() {
-                  x = x - 1;
-                });
-              },
-              child: Text("Decrementar"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Curtir extends StatefulWidget {
-  const Curtir({super.key});
-
-  @override
-  State<Curtir> createState() => _CurtirState();
-}
-
-class _CurtirState extends State<Curtir> {
-  bool curtiu = false;
-  int n = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 235, 4, 4),
-        title: Text("Curtir"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Curtiu $n vezes",
-              style: TextStyle(
-                color: Colors.red,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            IconButton(
-              iconSize: 50,
-              icon: curtiu == true
-                  ? Icon(Icons.favorite, color: Colors.red)
-                  : Icon(Icons.favorite_outline, color: Colors.black),
-              onPressed: () {
-                setState(() {
-                  n = n + 1;
-                  curtiu = true;
-                });
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 
 //pergunta da prova: 4
 //1- o que é um widget
