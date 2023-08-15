@@ -20,53 +20,36 @@ class _CadastroState extends State<Cadastro> {
         backgroundColor: Color.fromARGB(255, 144, 195, 24),
         title: Text("Cadastro"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Cadastraram $nc vezes",
-              style: TextStyle(
-                color: Color.fromARGB(255, 30, 45, 206),
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+      body: ListView(
+        padding: EdgeInsets.all(16),
+        children: [
+          TextFormField(
+            decoration: InputDecoration(
+              icon: Icon(
+                Icons.email,
+                color: Colors.blue,
               ),
+              hintText: "Informe seu email",
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 97, 202, 65)),
-              onPressed: () {
-                setState(() {
-                  nc = nc + 1;
-                });
-              },
-              child: Text("Cadastrar"),
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              icon: Icon(
+                Icons.lock,
+                color: Colors.grey,
+              ),
+              hintText: "Informe sua senha",
             ),
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              onPressed: () {
-                setState(() {
-                  nc = nc - 1;
-                });
-              },
-              child: Text("Decrementar"),
-            ),
-
-            // IconButton(
-            //   iconSize: 50,
-            //   icon: curtiu == true
-            //       ? Icon(Icons.favorite, color: Colors.red)
-            //       : Icon(Icons.favorite_outline, color: Colors.black),
-            //   onPressed: () {
-            //     setState(() {
-            //       nc = nc + 1;
-            //       curtiu = true;
-            //     });
-            //   },
-            // ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            child: Text("Salvar"),
+          ),
+        ],
       ),
     );
   }
