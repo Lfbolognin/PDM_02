@@ -4,6 +4,7 @@ import 'cadastro.dart';
 import 'curtir.dart';
 import 'package:flutter/material.dart';
 
+
 void main() {
   runApp(PaginaInicial());
 }
