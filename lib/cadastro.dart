@@ -10,6 +10,11 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
+  var nomeControler = TextEditingController();
+  var emailControler = TextEditingController();
+  var senhaControler = TextEditingController();
+  var repitasenhaControler = TextEditingController();
+  var cpfControler = TextEditingController();
   bool curtiu = false;
   int nc = 0;
 
@@ -28,6 +33,7 @@ class _CadastroState extends State<Cadastro> {
         padding: EdgeInsets.all(16),
         children: [
           TextFormField(
+            controller: nomeControler,
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.person,
@@ -41,6 +47,7 @@ class _CadastroState extends State<Cadastro> {
             height: 30,
           ),
           TextFormField(
+            controller: emailControler,
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.email,
@@ -52,6 +59,7 @@ class _CadastroState extends State<Cadastro> {
           ),
           SizedBox(height: 20),
           TextFormField(
+            controller: senhaControler,
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.lock,
@@ -61,10 +69,11 @@ class _CadastroState extends State<Cadastro> {
               border: OutlineInputBorder(),
             ),
           ),
-            SizedBox(
+          SizedBox(
             height: 30,
           ),
-           TextFormField(
+          TextFormField(
+            controller: repitasenhaControler,
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.lock,
@@ -78,6 +87,7 @@ class _CadastroState extends State<Cadastro> {
             height: 30,
           ),
           TextFormField(
+            controller: cpfControler,
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.badge,
@@ -100,20 +110,25 @@ class _CadastroState extends State<Cadastro> {
               border: OutlineInputBorder(),
             ),
             onTap: () {
-              showDatePicker(context: context, 
-              initialDate: DateTime.now(), 
-              firstDate: DateTime(1900,1,1), 
-              lastDate: DateTime.now()
-              );
+              showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(1900, 1, 1),
+                  lastDate: DateTime.now());
             },
           ),
           SizedBox(
             height: 30,
           ),
-
-
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              print("O botão salvar foi clicado");
+              print(nomeControler.text);
+              print(emailControler.text);
+              print(senhaControler.text);
+              print(repitasenhaControler.text);
+              print(cpfControler.text);
+            },
             style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 224, 104, 6)),
             child: Text("Salvar"),

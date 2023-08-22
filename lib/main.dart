@@ -3,7 +3,7 @@ import 'contador.dart';
 import 'cadastro.dart';
 import 'curtir.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(PaginaInicial());
@@ -16,6 +16,11 @@ class PaginaInicial extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      supportedLocales: [
+        Locale("pt", "BR"),
+        // Locale("en", "US"),
+      ],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       routes: {
         '/': (context) => Home(),
         '/contador': (context) => Contador(),
