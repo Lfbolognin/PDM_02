@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'contador.dart';
 import 'cadastro.dart';
+import 'login.dart';
 import 'curtir.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -26,6 +27,7 @@ class PaginaInicial extends StatelessWidget {
         '/contador': (context) => Contador(),
         '/curtir': (context) => Curtir(),
         '/cadastro': (context) => Cadastro(),
+        '/login': (context) => Login(),
       },
     );
   }
@@ -79,6 +81,20 @@ class Home extends StatelessWidget {
             trailing: Icon(Icons.chevron_right),
             onTap: () {
               Navigator.pushNamed(context, "/cadastro");
+            },
+          ),
+
+          ListTile(
+            leading: Icon(
+              Icons.account_box,
+              size: 46,
+              color: Color.fromARGB(255, 185, 80, 218),
+            ),
+            title: Text("Login"),
+            subtitle: Text("Exemplo de Login"),
+            trailing: Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.pushNamed(context, "/login");
             },
           ),
         ],
